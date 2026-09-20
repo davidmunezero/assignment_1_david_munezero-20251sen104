@@ -76,3 +76,74 @@ I populated the four tables using the import function of SQL Developer.
 ***Order Items Table***
 
 ![order items data](./images/image15.png)
+
+**Querries**
+
+## ***Join Querries***
+
+**Query 1:** List every order with the customer's name, city, and order date  
+
+```sql
+SELECT o.order_id, c.customer_name, c.city, o.order_date
+FROM orders o INNER JOIN customers c
+ON o.customer_id = c.customer_id;
+```
+**Output:** 
+
+![](./images/image9.png)
+
+**Business Interpretation:** This query shows where customers are making orders. It can be useful to management to know where to start targeted geographical marketing campagins.
+
+**Query 2:** List every order item with product name, category, price, and quantity 
+
+```sql
+SELECT oi.order_item_id, p.product_name, p.category, p.price, oi.quantity
+FROM order_items oi JOIN products p
+ON oi.product_id = p.product_id;
+```
+**Output:** 
+
+![](./images/image8.png)
+
+**Query 3:** List all customers and their orders where they exist, including customers with no orders 
+
+```sql
+SELECT c.customer_name, o.order_id, o.order_date
+-- use left join to include even customers without orders
+FROM customers c LEFT JOIN orders o
+ON o.customer_id = c.customer_id;
+```
+
+**Output:** 
+
+![](./images/image4.png)
+
+## ***CTE query***
+
+**Task:** Calculate each customer's total spend (quantity x price) and return customers above average spend. 
+
+```sql
+WITH cte_customer_spend AS (
+    -- compute customer's totals
+    SELECT c.customer_name, SUM(oi.quantity * p.price) AS "Total Spend"
+    FROM customers c, orders o, products p, order_items oi
+    WHERE c.customer_id = o.customer_id AND oi.order_id  = o.order_id
+    AND oi.product_id = p.product_id
+    GROUP BY c.customer_id, c.customer_name
+)
+-- display only customers above average spend
+SELECT *
+FROM cte_customer_spend
+WHERE "Total Spend" > (
+    SELECT AVG("Total Spend") FROM cte_customer_spend
+);
+```
+**Output:** 
+
+![](./images/image5.png)
+
+**Business Interpretation:** This query shows management which customers are willing to spend more money on their products.
+
+## ***Window-function queries***
+
+**Query:** Rank customers by total amount spent, highest first. 
