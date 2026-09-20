@@ -77,7 +77,7 @@ I populated the four tables using the import function of SQL Developer.
 
 ![order items data](./images/image15.png)
 
-**Querries**
+# **Querries**
 
 ## ***Join Querries***
 
