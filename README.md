@@ -92,7 +92,7 @@ ON o.customer_id = c.customer_id;
 
 ![](./images/image9.png)
 
-**Business Interpretation:** This query shows where customers are making orders. It can be useful to management to know where to start targeted geographical marketing campagins.
+**Business Interpretation:** This query shows where customers are making orders. It can be useful to management to know where to start targeted geographical marketing campaigns.
 
 **Query 2:** List every order item with product name, category, price, and quantity 
 
@@ -167,7 +167,7 @@ FROM cte_customer_spend;
 
 ![](./images/image1.png)
 
-**Business Interpretation:** This query shows management which customers are most active for targeted marketing.
+**Business Interpretation:** This query shows management high-paying customers for targeted marketing.
 
 **Query:** Number each customer's orders in the order placed. 
 
@@ -230,7 +230,3 @@ WHERE c.customer_id IN (
 # **Challenges & Resolutions**
 
 Management might find it difficult to run the same queries to produce reports. A user-friendly interface that hides the underlying query implementation while still providing GUI menus to interact with the database might be helpful. 
-
-# **Conclusion**
-
-I set up a database for Sunrise Supermarket and wrote various queries to analyze customer spending and revenue. 
