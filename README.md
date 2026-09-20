@@ -41,3 +41,38 @@ CREATE TABLE order_items (
   quantity NUMBER
 );
 ```
+# **Creating Database**
+![Creating Database](./images/image16.png) 
+
+* Change container to sunrise PDB and grant all privileges to sunrise_admin
+
+![Changing container](./images/image17.png)
+![Granting privileges](./images/image6.png)
+
+* Login as sunrise\_admin
+
+![Database login](./images/image10.png)
+
+# **Inserting Data**
+
+I populated the four tables using the import function of SQL Developer. 
+
+![Importing data](./images/image18.png)
+
+**Populated Tables**
+
+***Customers Table***
+
+![customer data](./images/image2.png)
+
+***Products Table***
+
+![product data](./images/image7.png)
+
+***Orders Table***
+
+![orders table](./images/image3.png)
+
+***Order Items Table***
+
+![order items data](./images/image15.png)
